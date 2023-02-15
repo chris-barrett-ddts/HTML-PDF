@@ -1,0 +1,60 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Creating a PDF from HTML
+        <span class="govuk-caption-xl">{{releaseVersion}}</span>
+      </h1>{{releaseVersion | log }}
+      <p>
+        This prototype relies on an extra package html-pdf-node you can install this by "npm i html-pdf-node"
+      </p>
+      <p>
+        <a href="https://github.com/mrafiqk/html-pdf-node" >github repo tml-pdf-node</a>
+      </p>
+
+
+      <p>The function in the routes file generates and downloads the PDF</p>
+
+      <p>You can set the page to be downloaded by using the path attribute</p>
+
+      <p>You can then call that function on form submission as per the button below</p>
+
+      <p>You can also use the layout to create a custom print layout</p>
+
+      <p>I've also added a media query in application.scss to stop the URL being printed out after the links on the PDF</p>
+
+      <p>Next steps are to check on PDF accessibility best practice</p>
+
+      <form action="/generatePDF" method="post" novalidate>
+
+
+           {{ govukButton({
+  text: "Download PDF",
+  preventDoubleClick: true
+}) }}
+         </form>
+
+
+         <h2 class="govuk-heading-l">Example flow</h2>
+         <form action="add-a-contact/enter-a-name" method="get" novalidate>
+
+
+              {{ govukButton({
+     text: "Start an application",
+     preventDoubleClick: true
+   }) }}
+            </form>
+
+
+    </div>
+  </div>
+
+{% endblock %}

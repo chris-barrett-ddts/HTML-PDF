@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+<!--set page title-->
+{% set title = "Contact set up" %}
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+<!-- phase banner -->
+{% include "includes/phase-banner.html" %}
+
+<!--no back button-->
+
+{% endblock %}
+
+<!--content block-->
+{% block content %}
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <!--get the name of the last contact set up, we blanked data['name'] after we pushed the object so we need to loop through the contacts to get the name-->
+    <!--get all the contact data-->
+    {% set contacts = data['contacts']%}
+    <!--set the global scope of name-->
+    {% set name = ""%}
+    <!--loop through the contacts-->
+    {% for contact in contacts %}
+    <!--if this is the last loop set the name-->
+    {% if loop.last %}
+    {% set name = contact.name %}
+    {% endif %}
+    {% endfor %}
+
+
+    {{ govukPanel({
+      titleText: title,
+      html: 'You set up ' + name|default("Jane Bigglesworth") + ' as a contact'
+    }) }}
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="../">
+        Go to home
+      </a>
+    </p>
+
+    <form action="/generateAppPDF" method="post" novalidate>
+
+         {{ govukButton({
+    text: "Download your application",
+    preventDoubleClick: true
+    }) }}
+       </form>
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+{% endblock %}

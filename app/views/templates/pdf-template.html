@@ -1,0 +1,101 @@
+
+{% extends "layout_print.html" %}
+
+{% block pageTitle %}
+  Your application – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+ <div class="govuk-grid-column-two-thirds-from-desktop">
+
+   <h1 class="govuk-heading-l">Your application</h1>
+
+   <h2 class="govuk-heading-m">Personal details</h2>
+
+   {{ govukSummaryList({
+     classes: 'govuk-!-margin-bottom-9',
+     rows: [
+       {
+         key: {
+           text: "Name"
+         },
+         value: {
+           text: "Sarah Philips"
+         }
+       },
+       {
+         key: {
+           text: "Date of birth"
+         },
+         value: {
+           text: "5 January 1978"
+         }
+       },
+       {
+         key: {
+           text: "Address"
+         },
+         value: {
+           html: "72 Guild Street<br>London<br>SE23 6FH"
+         }
+       },
+       {
+         key: {
+           text: "Contact details"
+         },
+         value: {
+           html: '<p class="govuk-body">07700 900457</p><p class="govuk-body">sarah.phillips@example.com</p>'
+         }
+       }
+     ]
+   }) }}
+
+
+   <h2 class="govuk-heading-m">Application details</h2>
+
+   {{ govukSummaryList({
+     classes: 'govuk-!-margin-bottom-9',
+     rows: [
+       {
+         key: {
+           text: "Previous application number"
+         },
+         value: {
+           text: "502135326"
+         }
+       },
+       {
+         key: {
+           text: "Licence type"
+         },
+         value: {
+           text: "For personal use"
+         }
+       },
+       {
+         key: {
+           text: "Home address"
+         },
+         value: {
+           html: "72 Guild Street<br>London<br>SE23 6FH"
+         }
+       },
+       {
+         key: {
+           text: "Licence period"
+         },
+         value: {
+           text: "Valid for 6 months"
+         }
+       }
+     ]
+   }) }}
+
+   <p class="govuk-body">Your application was submitted on 1 February 2022 at 19:55.</p>
+
+ </div>
+</div>
+
+{% endblock %}

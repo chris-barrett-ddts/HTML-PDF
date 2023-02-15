@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+<!--set page title-->
+{% set title = "Check your answers" %}
+
+
+
+{% block pageTitle %}
+{{title}} - GOV.UK
+{% endblock %}
+
+
+
+
+<!--content block-->
+{% block content %}
+
+<!-- page title -->
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form method="post" novalidate>
+
+     <h1 class="govuk-heading-l">{{title}}</h1>
+
+     <h2 class="govuk-heading-m">Contact details</h2>
+
+
+
+      {{ govukSummaryList({
+    rows: [
+      {
+        key: {
+          text: "Name"
+        },
+        value: {
+          text: data['name']|default("Jane Bigglesworth")
+        },
+        actions: {
+          items: [
+            {
+              href: "enter-a-name",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      },
+      {
+        key: {
+          text: "Email"
+        },
+        value: {
+          text: data['email']|default("jbigglesworth@gmail.co.uk")
+        },
+        actions: {
+          items: [
+            {
+              href: "enter-an-email",
+              text: "Change",
+              visuallyHiddenText: "email"
+            }
+          ]
+        }
+      }
+    ]
+  }) }}
+
+      {{ govukButton({
+  text: "Confirm"
+}) }}
+
+    </form>
+
+  </div>
+</div>
+
+
+
+{% endblock %}
